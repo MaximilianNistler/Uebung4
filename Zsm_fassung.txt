@@ -15,7 +15,7 @@ ssh -L [lokaler Port]:[ZielHostname]:[ZielHostPort] [user]@[host]
 -->
 ssh -L 8022:sal-rpi<#>.lab5.lan:22 Maxi@rpi
 
-in RasbpianLite /etc/network/interface checken	--> eth0 statisch konfiguriert, auf dhcp ändern?
+in RasbpianLite /etc/network/interface checken	--> eth0 statisch konfiguriert, auf dhcp aendern?
 						--> sonst IP Konflikt 
 
 iface wlan0 inet dhcp
@@ -23,8 +23,8 @@ iface wlan0 inet dhcp
 	metric 10
 
 auto eth0
-iface eth0 inet static
-	address 192.168.5.97/24 		#aendern!
+iface eth0 inet static				#entweder von static auf dhcp aendern
+	address 192.168.5.97/24 		#oder static lassen und IP manuell aendern
 	gateway 192.168.5.1
 	dns-namerservers 192.168.5.2
 	dns-search example.net

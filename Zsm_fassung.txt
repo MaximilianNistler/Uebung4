@@ -1,0 +1,71 @@
+Aufgabe 1:
+
+Dev_PC (Server) --> SSH (git SCM) über Engineering LAN (SAL-5-NET) --> Raspberry Pi (Client)
+
+in git SCM:
+
+ssh -L [lokaler Port]:[ZielHostname]:[ZielHostPort] [user]@[host]
+
+[lokaler Port]:	22
+[ZielHostname]:	sal-rpi<#>.lab5.lan mit <#> Raspberry Pi Nummer
+[ZielHostPort]:	22
+[user]:		Maxi
+[host]:		rpi
+
+-->
+ssh -L 8022:sal-rpi<#>.lab5.lan:22 Maxi@rpi
+
+in RasbpianLite /etc/network/interface checken	--> eth0 statisch konfiguriert, auf dhcp ändern?
+						--> sonst IP Konflikt 
+
+iface wlan0 inet dhcp
+	wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+	metric 10
+
+auto eth0
+iface eth0 inet static
+	address 192.168.5.97/24 		#aendern!
+	gateway 192.168.5.1
+	dns-namerservers 192.168.5.2
+	dns-search example.net
+	metric 20
+
+
+Raspberry Pi über RasbpianLite auf WLAN rekonfigurieren:
+
+wpa_supplicant/wpa_supplicant.conf
+
+network={
+	ssid=SAL-4-NET		#SSID des Netzwerks
+	scan_ssid=1		#Verbindung versteckte Netzwerke
+	proto=RSN 		#WPA2 Verschlüsselung
+	key_mgmt=WPA-PSK	#pre-shared-key
+	pairwise=CCMP		#Veränderung AES-Schlüssel
+	psk=ProductionNetz	#Passwort des Netzwerks
+	auth_alg=OPEN		#Authentifizierungsalgorithmus
+}
+
+anschließend Raspberry Pi rekonfigurieren:
+
+wpa_cli -i wlan0 reconfigure
+
+Aufgabe 2:
+Raspberry Pi als Jumphost über Engineering Netzwerk
+http://sal-services01.manage.lan/cgi-bin/network.py
+
+Dev-PC an Office Netzwerk --> Raspberry Pi über WLAN betrieben
+erneut HP aufrufen
+
+Aufgabe 3:
+Codesys IDE --> vorbereitetes Projekt
+
+IDE Verbindung zu Runtime auf Raspberry Pi
+Projekt in Runtime geladen und in zyklischer Ausführung
+
+Aufgabe 4:
+neue Komm.schnittstelle EtherCAT-Master
+EtherCAT Buskoppler als Slave anschließend
+Codesys einloggen, Koppler nach Devices durchsuchen (Klemmen)
+GVL auf EL2008 (digOut) mappen
+
+

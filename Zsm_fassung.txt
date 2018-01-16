@@ -68,4 +68,10 @@ EtherCAT Buskoppler als Slave anschließend
 Codesys einloggen, Koppler nach Devices durchsuchen (Klemmen)
 GVL auf EL2008 (digOut) mappen
 
+Aufabe 5:
+Dev-PC mit OPC UA Server auf Raspberry Pi verbinden
+freigegebene Werte mit UaExpert auslesen
 
+Server anlegen über URL "opc.tcp://<Raspberry Pi IP>:4840"
+Server auswählen und verbinden 
+Zum Auslesen der Variablen von Adressraum in DataAccesView ziehen

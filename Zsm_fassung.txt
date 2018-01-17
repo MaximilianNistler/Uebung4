@@ -7,13 +7,13 @@ in git SCM:
 ssh -L [lokaler Port]:[ZielHostname]:[ZielHostPort] [user]@[host]
 
 [lokaler Port]:	22
-[ZielHostname]:	sal-rpi<#>.lab5.lan mit <#> Raspberry Pi Nummer
+[ZielHostname]:	sal-rpi<#>.lab5.lan mit <0#> Raspberry Pi Nummer
 [ZielHostPort]:	22
 [user]:		Maxi
 [host]:		rpi
 
 -->
-ssh -L 8022:sal-rpi<#>.lab5.lan:22 Maxi@rpi
+ssh -L 8022:sal-rpi<0#>.lab5.lan:22 Maxi@rpi
 
 in RasbpianLite /etc/network/interface checken	--> eth0 statisch konfiguriert, auf dhcp aendern?
 						--> sonst IP Konflikt 
@@ -46,8 +46,10 @@ network={
 }
 
 anschließend Raspberry Pi rekonfigurieren:
-
 wpa_cli -i wlan0 reconfigure
+
+Konfiguration für Netzwerkinterface aktivieren:
+pi@rasp:~$ sudo ifdown <iface> sudo ifup <iface>
 
 Aufgabe 2:
 Raspberry Pi als Jumphost über Engineering Netzwerk
@@ -63,7 +65,7 @@ IDE Verbindung zu Runtime auf Raspberry Pi
 Projekt in Runtime geladen und in zyklischer Ausführung
 
 Aufgabe 4:
-neue Komm.schnittstelle EtherCAT-Master
+neue Kommunikationsschnittstelle EtherCAT-Master
 EtherCAT Buskoppler als Slave anschließend
 Codesys einloggen, Koppler nach Devices durchsuchen (Klemmen)
 GVL auf EL2008 (digOut) mappen

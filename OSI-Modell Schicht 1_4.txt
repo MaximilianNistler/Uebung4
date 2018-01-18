@@ -17,3 +17,33 @@ Schickt 4: TCP/UDP Schicht:
 		- UDP hat Vorteile wenn es auf Geschwindigkeit ankommt und nicht auf Richtigkeit
 		- z.B. Voice over IP, fehlende Pakete würden mit 0,5s Delay nachgereicht werden
 		- Nachricht wäre unverständlich, fehlendes Paket weniger tragisch --> knacken in Leitung
+
+Switch vs. Hub:
+
+	Hub:
+	- arbeitet auf Schicht 1
+	- sendet Bitstrom ins gesamte Netz
+	- jeder Client muss anhand der MAC-Adresse (Schicht 2) sehen, ob Nachricht für ihn ist
+	- keine Ringstrukturen, Nachricht wird solange im Kreis versendet bis Netz überlastet
+
+	Switch:
+		unmanaged Switch:
+			- arbeitet auf Schicht 2
+			- leitet Paket anahnd MAC-Adresse nur an einen Port weiter
+			- interne Tabelle welche MAC-Adresse an welchem Port
+			- überwacht welcher Port Pakete für welche MAC empfänger --> Tabelle
+			- falls MAC nicht in Tabelle, verhält sich wie Hub, leitet an alle weiter
+			- Schleifen führen zu Problemen
+			- Spanning Tree Protocol --> unnötige Verbindungen werden abgeschalten
+
+		managed Switch:
+			- Konfigurationmöglichkeiten, Teilnehmer priorisieren
+
+
+
+
+
+
+
+
+

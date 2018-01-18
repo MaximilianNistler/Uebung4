@@ -1,0 +1,19 @@
+Schicht 1: Bitstrom kabelgebunden (LAN) oder kabellos (WLAN)
+Schicht 2: Ethernet, Unterteilung Bitstrom in Rahmen, Overhead mit MAC-Adresse von Sender/Empfänger
+Schicht 3: IP-Schicht, Identifikation im Netzwerk nicht mehr über MAC-Adresse sondern über IP-Adresse
+Schickt 4: TCP/UDP Schicht:
+		TCP:
+		- verbindunsorientierer Dienst
+		- IP-Schicht ist unzuverlässig, überträgt den Bitstrom nicht fehlerfrei
+		- TCP unterteilt Nachricht in Segmente und versieht sie mit einem Header
+		- zusätzlich ist ein Fehlererkennungs- und Korrekturmechanismus integriert
+		- Sender erhält Signal von Empfänger, wenn Segment erfolgreich angekommen oder nicht
+		- ein fehlendes Segment wird erneut gesendet
+		- Empfänger setzt anschließend empfangene Segmente wieder zu Nachricht zusammen
+
+		UDP:
+		- verbindungsloser Dienst
+		- Nachricht wird geschickt ohne Feedback ob angekommen oder nicht --> unzuverlässig
+		- UDP hat Vorteile wenn es auf Geschwindigkeit ankommt und nicht auf Richtigkeit
+		- z.B. Voice over IP, fehlende Pakete würden mit 0,5s Delay nachgereicht werden
+		- Nachricht wäre unverständlich, fehlendes Paket weniger tragisch --> knacken in Leitung
